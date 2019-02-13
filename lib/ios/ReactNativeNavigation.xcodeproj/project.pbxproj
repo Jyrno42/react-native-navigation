@@ -312,6 +312,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5879C82822147EA400DF67CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5879C82322147EA400DF67CF /* DeckTransition.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D93F1C981EAEDB6E009A7474;
+			remoteInfo = DeckTransition;
+		};
+		5879C82A22147EA400DF67CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5879C82322147EA400DF67CF /* DeckTransition.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D93F1CA11EAEDB6E009A7474;
+			remoteInfo = DeckTransitionTests;
+		};
 		7B49FEC11E95090800DEB3EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D8AFADB51BEE6F3F00A4592D /* Project object */;
@@ -570,6 +584,7 @@
 		50F5DFC01F407A8C001A00BC /* RNNTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNNTabBarController.m; sourceTree = "<group>"; };
 		50F5DFC31F407AA0001A00BC /* RNNNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNNNavigationController.h; sourceTree = "<group>"; };
 		50F5DFC41F407AA0001A00BC /* RNNNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNNNavigationController.m; sourceTree = "<group>"; };
+		5879C82322147EA400DF67CF /* DeckTransition.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeckTransition.xcodeproj; path = ../../vendor/DeckTransition/DeckTransition.xcodeproj; sourceTree = "<group>"; };
 		651E1F8821FD611600DFEA19 /* UISplitViewController+RNNOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UISplitViewController+RNNOptions.h"; sourceTree = "<group>"; };
 		651E1F8921FD624600DFEA19 /* UISplitViewController+RNNOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UISplitViewController+RNNOptions.m"; sourceTree = "<group>"; };
 		651E1F8B21FD63F400DFEA19 /* RNNSplitViewControllerPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNNSplitViewControllerPresenter.h; sourceTree = "<group>"; };
@@ -990,6 +1005,15 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		5879C82422147EA400DF67CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5879C82922147EA400DF67CF /* DeckTransition.framework */,
+				5879C82B22147EA400DF67CF /* DeckTransitionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7B1E4C4B1E2D173700C3A525 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1080,6 +1104,7 @@
 				7B49FEDC1E950A7A00DEB3EA /* libRCTWebSocket.a */,
 				7B49FEDD1E950A7A00DEB3EA /* libReact.a */,
 				7B49FEDE1E950A7A00DEB3EA /* libyoga.a */,
+				5879C82322147EA400DF67CF /* DeckTransition.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1391,6 +1416,12 @@
 			mainGroup = D8AFADB41BEE6F3F00A4592D;
 			productRefGroup = D8AFADBE1BEE6F3F00A4592D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5879C82422147EA400DF67CF /* Products */;
+					ProjectRef = 5879C82322147EA400DF67CF /* DeckTransition.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D8AFADBC1BEE6F3F00A4592D /* ReactNativeNavigation */,
@@ -1398,6 +1429,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5879C82922147EA400DF67CF /* DeckTransition.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DeckTransition.framework;
+			remoteRef = 5879C82822147EA400DF67CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5879C82B22147EA400DF67CF /* DeckTransitionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeckTransitionTests.xctest;
+			remoteRef = 5879C82A22147EA400DF67CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7B49FEB91E95090800DEB3EA /* Resources */ = {

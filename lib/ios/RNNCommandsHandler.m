@@ -8,6 +8,8 @@
 #import "RNNDefaultOptionsHelper.h"
 #import "UIViewController+RNNOptions.h"
 
+#import "DeckTransition/DeckTransition-Swift.h"
+
 static NSString* const setRoot	= @"setRoot";
 static NSString* const setStackRoot	= @"setStackRoot";
 static NSString* const push	= @"push";
