@@ -58,9 +58,10 @@ class CustomTransitionOrigin extends Component {
         options: {
           deck: {
             enabled: enableDeck,
+            swipeToDismiss: false, // default: true
             // Unit: Seconds
-            presentDuration: 0.4,
-            dismissDuration: 0.4
+            presentDuration: 0.4, // default: 0.3
+            dismissDuration: 0.4 // default: 0.3
           },
           animations: {
             push: {

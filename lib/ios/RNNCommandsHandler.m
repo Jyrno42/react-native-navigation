@@ -239,14 +239,15 @@ static NSString* const setDefaultOptions	= @"setDefaultOptions";
 		id transitioningDelegate;
 
 		if (newVc.resolveOptions.deck && newVc.resolveOptions.deck.enabled) {
-			transitioningDelegate = [[DeckTransitioningDelegate alloc] initWithIsSwipeToDismissEnabled:YES
-																presentDuration:newVc.resolveOptions.deck.presentDuration
-																presentAnimation:nil
-																presentCompletion:nil
-																dismissDuration:newVc.resolveOptions.deck.dismissDuration
-																dismissAnimation:nil
-																dismissCompletion:nil
-															];
+			transitioningDelegate = [[DeckTransitioningDelegate alloc]
+										initWithIsSwipeToDismissEnabled:newVc.resolveOptions.deck.swipeToDismiss
+										presentDuration:newVc.resolveOptions.deck.presentDuration
+										presentAnimation:nil
+										presentCompletion:nil
+										dismissDuration:newVc.resolveOptions.deck.dismissDuration
+										dismissAnimation:nil
+										dismissCompletion:nil
+									];
 		}
 
 		[_modalManager showModal:newVc
