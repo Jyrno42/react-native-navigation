@@ -238,12 +238,12 @@ static NSString* const setDefaultOptions	= @"setDefaultOptions";
 	[newVc renderTreeAndWait:[newVc.resolveOptions.animations.showModal.waitForRender getWithDefaultValue:NO] perform:^{
 		id transitioningDelegate;
 
-		if (newVc.resolveOptions.deck && [newVc.resolveOptions.deck.enabled getWithDefaultValue:NO]) {
+		if (newVc.resolveOptions.deck && newVc.resolveOptions.deck.enabled) {
 			transitioningDelegate = [[DeckTransitioningDelegate alloc] initWithIsSwipeToDismissEnabled:YES
-																presentDuration:[NSNumber numberWithDouble:0.6]
+																presentDuration:newVc.resolveOptions.deck.presentDuration
 																presentAnimation:nil
 																presentCompletion:nil
-																dismissDuration:[NSNumber numberWithDouble:0.6]
+																dismissDuration:newVc.resolveOptions.deck.dismissDuration
 																dismissAnimation:nil
 																dismissCompletion:nil
 															];

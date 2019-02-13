@@ -57,7 +57,10 @@ class CustomTransitionOrigin extends Component {
         name: 'navigation.playground.CustomTransitionDestination',
         options: {
           deck: {
-            enabled: enableDeck
+            enabled: enableDeck,
+            // Unit: Seconds
+            presentDuration: 0.4,
+            dismissDuration: 0.4
           },
           animations: {
             push: {

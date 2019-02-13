@@ -2,6 +2,8 @@
 
 @interface RNNDeckOptions : RNNOptions
 
-@property (nonatomic, strong) Bool* enabled;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, strong) NSNumber* presentDuration;
+@property (nonatomic, strong) NSNumber* dismissDuration;
 
 @end
