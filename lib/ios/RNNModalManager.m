@@ -16,21 +16,24 @@
 }
 
 -(void)showModal:(UIViewController *)viewController animated:(BOOL)animated completion:(RNNTransitionWithComponentIdCompletionBlock)completion {
-	[self showModal:viewController animated:animated hasCustomAnimation:NO completion:completion];
+	[self showModal:viewController animated:animated hasCustomAnimation:NO transitioningDelegate:nil completion:completion];
 }
 
--(void)showModal:(UIViewController *)viewController animated:(BOOL)animated hasCustomAnimation:(BOOL)hasCustomAnimation completion:(RNNTransitionWithComponentIdCompletionBlock)completion {
+-(void)showModal:(UIViewController *)viewController animated:(BOOL)animated hasCustomAnimation:(BOOL)hasCustomAnimation transitioningDelegate:(id)transitioningDelegate completion:(RNNTransitionWithComponentIdCompletionBlock)completion {
 	if (!viewController) {
 		@throw [NSException exceptionWithName:@"ShowUnknownModal" reason:@"showModal called with nil viewController" userInfo:nil];
 	}
 	
 	UIViewController* topVC = [self topPresentedVC];
 	topVC.definesPresentationContext = YES;
-	
-	if (hasCustomAnimation) {
-		viewController.transitioningDelegate = (UIViewController<UIViewControllerTransitioningDelegate>*)topVC;
+
+	if (transitioningDelegate) {
+		viewController.transitioningDelegate = transitioningDelegate;
+		viewController.modalPresentationStyle = UIModalPresentationCustom;
+	} else if (hasCustomAnimation) {
+		transitioningDelegate = (UIViewController<UIViewControllerTransitioningDelegate>*)topVC;
 	}
-	
+
 	[topVC presentViewController:viewController animated:animated completion:^{
 		if (completion) {
 			completion(nil);

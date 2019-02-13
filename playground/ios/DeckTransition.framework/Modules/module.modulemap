@@ -1,0 +1,11 @@
+framework module DeckTransition {
+  umbrella header "DeckTransition.h"
+
+  export *
+  module * { export * }
+}
+
+module DeckTransition.Swift {
+    header "DeckTransition-Swift.h"
+    requires objc
+}

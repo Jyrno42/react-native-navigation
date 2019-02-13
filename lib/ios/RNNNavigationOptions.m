@@ -1,5 +1,6 @@
 #import "RNNNavigationOptions.h"
 #import <React/RCTConvert.h>
+#import "RNNDeckOptions.h"
 #import "RNNNavigationController.h"
 #import "RNNTabBarController.h"
 #import "RNNTopBarOptions.h"
@@ -28,6 +29,7 @@
 	self.animations = [[RNNTransitionsOptions alloc] initWithDict:dict[@"animations"]];
 	self.statusBar = [[RNNStatusBarOptions alloc] initWithDict:dict[@"statusBar"]];
 	self.preview = [[RNNPreviewOptions alloc] initWithDict:dict[@"preview"]];
+	self.deck = [[RNNDeckOptions alloc] initWithDict:dict[@"deck"]];
 	self.layout = [[RNNLayoutOptions alloc] initWithDict:dict[@"layout"]];
 	
 	self.popGesture = [[Bool alloc] initWithValue:dict[@"popGesture"]];

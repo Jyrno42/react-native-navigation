@@ -9,6 +9,7 @@
 #import "RNNTransitionsOptions.h"
 #import "RNNStatusBarOptions.h"
 #import "RNNPreviewOptions.h"
+#import "RNNDeckOptions.h"
 #import "RNNLayoutOptions.h"
 #import "RNNSplitViewOptions.h"
 
@@ -28,6 +29,7 @@ extern const NSInteger TOP_BAR_TRANSPARENT_TAG;
 @property (nonatomic, strong) RNNTransitionsOptions* animations;
 @property (nonatomic, strong) RNNStatusBarOptions* statusBar;
 @property (nonatomic, strong) RNNPreviewOptions* preview;
+@property (nonatomic, strong) RNNDeckOptions* deck;
 @property (nonatomic, strong) RNNLayoutOptions* layout;
 @property (nonatomic, strong) RNNSplitViewOptions* splitView;
 

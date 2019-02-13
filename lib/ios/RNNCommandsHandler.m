@@ -7,6 +7,7 @@
 #import "RNNErrorHandler.h"
 #import "RNNDefaultOptionsHelper.h"
 #import "UIViewController+RNNOptions.h"
+#import "DeckTransition/DeckTransition-Swift.h"
 
 static NSString* const setRoot	= @"setRoot";
 static NSString* const setStackRoot	= @"setStackRoot";
@@ -235,7 +236,24 @@ static NSString* const setDefaultOptions	= @"setDefaultOptions";
 	UIViewController<RNNParentProtocol> *newVc = [_controllerFactory createLayout:layout];
 	
 	[newVc renderTreeAndWait:[newVc.resolveOptions.animations.showModal.waitForRender getWithDefaultValue:NO] perform:^{
-		[_modalManager showModal:newVc animated:[newVc.getCurrentChild.resolveOptions.animations.showModal.enable getWithDefaultValue:YES] hasCustomAnimation:newVc.getCurrentChild.resolveOptions.animations.showModal.hasCustomAnimation completion:^(NSString *componentId) {
+		id transitioningDelegate;
+
+		if (newVc.resolveOptions.deck && [newVc.resolveOptions.deck.enabled getWithDefaultValue:NO]) {
+			transitioningDelegate = [[DeckTransitioningDelegate alloc] initWithIsSwipeToDismissEnabled:YES
+																presentDuration:[NSNumber numberWithDouble:0.6]
+																presentAnimation:nil
+																presentCompletion:nil
+																dismissDuration:[NSNumber numberWithDouble:0.6]
+																dismissAnimation:nil
+																dismissCompletion:nil
+															];
+		}
+
+		[_modalManager showModal:newVc
+						animated:[newVc.getCurrentChild.resolveOptions.animations.showModal.enable getWithDefaultValue:YES]
+						hasCustomAnimation:newVc.getCurrentChild.resolveOptions.animations.showModal.hasCustomAnimation
+						transitioningDelegate:transitioningDelegate
+						completion:^(NSString *componentId) {
 			[_eventEmitter sendOnNavigationCommandCompletion:showModal params:@{@"layout": layout}];
 			completion(componentId);
 		}];

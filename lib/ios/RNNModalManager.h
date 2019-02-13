@@ -14,7 +14,7 @@
 @property (nonatomic, weak) id<RNNModalManagerDelegate> delegate;
 
 - (void)showModal:(UIViewController *)viewController animated:(BOOL)animated completion:(RNNTransitionWithComponentIdCompletionBlock)completion;
-- (void)showModal:(UIViewController *)viewController animated:(BOOL)animated hasCustomAnimation:(BOOL)hasCustomAnimation completion:(RNNTransitionWithComponentIdCompletionBlock)completion;
+- (void)showModal:(UIViewController *)viewController animated:(BOOL)animated hasCustomAnimation:(BOOL)hasCustomAnimation transitioningDelegate:(id)transitioningDelegate completion:(RNNTransitionWithComponentIdCompletionBlock)completion;
 - (void)dismissModal:(UIViewController *)viewController completion:(RNNTransitionCompletionBlock)completion;
 - (void)dismissAllModalsAnimated:(BOOL)animated;
 

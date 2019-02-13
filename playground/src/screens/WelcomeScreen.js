@@ -1,6 +1,6 @@
 const React = require('react');
 const { Component } = require('react');
-const { View, Text, Platform, TouchableHighlight } = require('react-native');
+const { View, Text, Platform, ScrollView, TouchableHighlight } = require('react-native');
 
 const testIDs = require('../testIDs');
 const Button = require('./Button');
@@ -31,7 +31,7 @@ class WelcomeScreen extends Component {
 
   render() {
     return (
-      <View style={styles.bar}>
+      <ScrollView contentContainerStyle={styles.bar}>
         <View style={{ width: 2, height: 2, borderRadius: 1, backgroundColor: 'red', alignSelf: 'center' }} />
         <View style={styles.root} key={'root'}>
           <Text testID={testIDs.WELCOME_SCREEN_HEADER} style={styles.h1}>{`React Native Navigation!`}</Text>
@@ -56,7 +56,7 @@ class WelcomeScreen extends Component {
           <Text style={styles.footer}>{`this.props.componentId = ${this.props.componentId}`}</Text>
         </View>
         <View style={{ width: 2, height: 2, borderRadius: 1, backgroundColor: 'red', alignSelf: 'center' }} />
-      </View>
+      </ScrollView>
     );
   }
 
