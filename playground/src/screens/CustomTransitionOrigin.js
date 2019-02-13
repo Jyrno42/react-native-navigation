@@ -52,16 +52,32 @@ class CustomTransitionOrigin extends Component {
   onClickNavigationIcon() {
     const { enableDeck } = this.state;
 
-    Navigation.showModal({
+    const useStack = false;
+
+    let config = {
       component: {
         name: 'navigation.playground.CustomTransitionDestination',
         options: {
           deck: {
             enabled: enableDeck,
-            swipeToDismiss: false, // default: true
+            swipeToDismiss: true, // default: true
             // Unit: Seconds
             presentDuration: 0.4, // default: 0.3
             dismissDuration: 0.4 // default: 0.3
+          },
+          topBar: {
+            title: {
+              text: 'I am a modal'
+            },
+
+            rightButtons: [
+              {
+                id: 'cancel',
+                testID: 'cancel',
+                icon: require('../../img/Icon-87.png'),
+                text: 'Cancel'
+              }
+            ]
           },
           animations: {
             push: {
@@ -95,7 +111,17 @@ class CustomTransitionOrigin extends Component {
           }
         }
       }
-    });
+    };
+
+    if (useStack) {
+      config = {
+        stack: {
+          children: [config],
+        },
+      }
+    }
+
+    Navigation.showModal(config);
   }
   onToggleSwitch(value) {
     this.setState({

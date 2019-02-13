@@ -9,6 +9,9 @@ class CustomTransitionDestination extends Component {
     super(props);
     this.pop = this.pop.bind(this);
     this.push = this.push.bind(this);
+    this.doHideModal = this.doHideModal.bind(this);
+
+    Navigation.events().bindComponent(this);
   }
 
   static options() {
@@ -38,6 +41,11 @@ class CustomTransitionDestination extends Component {
       }
     };
   }
+
+  navigationButtonPressed({ buttonId }) {
+    this.doHideModal();
+  }
+
   push() {
     Navigation.push(this.props.componentId, {
       component: {
@@ -70,6 +78,9 @@ class CustomTransitionDestination extends Component {
       }
     });
   }
+  doHideModal() {
+    Navigation.dismissModal(this.props.componentId);
+  }
   render() {
     return (
       <View style={styles.root}>
@@ -77,6 +88,9 @@ class CustomTransitionDestination extends Component {
           <Navigation.Element resizeMode={'contain'} elementId={'customDestinationImage'}>
             <Image resizeMode={'contain'} style={{ width: 300, height: 300 }} source={require('../../img/400.jpeg')} />
           </Navigation.Element>
+          <TouchableOpacity onPress={this.doHideModal}>
+            <Text style={{ color: 'blue' }}>hide</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

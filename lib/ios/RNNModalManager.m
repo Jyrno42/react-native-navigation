@@ -31,7 +31,7 @@
 		viewController.transitioningDelegate = transitioningDelegate;
 		viewController.modalPresentationStyle = UIModalPresentationCustom;
 	} else if (hasCustomAnimation) {
-		transitioningDelegate = (UIViewController<UIViewControllerTransitioningDelegate>*)topVC;
+		viewController.transitioningDelegate = (UIViewController<UIViewControllerTransitioningDelegate>*)topVC;
 	}
 
 	[topVC presentViewController:viewController animated:animated completion:^{
