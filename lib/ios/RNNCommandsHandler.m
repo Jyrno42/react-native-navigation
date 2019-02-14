@@ -8,7 +8,13 @@
 #import "RNNDefaultOptionsHelper.h"
 #import "UIViewController+RNNOptions.h"
 
-#import "DeckTransition/DeckTransition-Swift.h"
+// See: https://github.com/CocoaPods/CocoaPods/issues/7594
+#if __has_include("DeckTransition-Swift.h")
+    #import "DeckTransition-Swift.h"
+#else
+    #import <DeckTransition/DeckTransition-Swift.h>
+#endif
+
 
 static NSString* const setRoot	= @"setRoot";
 static NSString* const setStackRoot	= @"setStackRoot";
