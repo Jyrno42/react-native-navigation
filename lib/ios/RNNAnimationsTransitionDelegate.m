@@ -6,15 +6,68 @@
 	self = [super init];
 	self.screenTransition = screenTransition;
 	self.isDismiss = isDismiss;
+
+	self.deckDelegate = nil;
+	self.modalPresentationStyle = UIModalPresentationNone;
+
+	// This does not work. Lets create a Proxy thingie that inits either DeckDelegate or RNNAnimationsTransitionDelegate
+	//  based on props. In the future the proxy thingie should be configurable via plugin lookup or something...
+	
+	if ([self.screenTransition.enableDeck getWithDefaultValue:NO]) {
+#ifdef HAS_DECK_TRANSITION
+		self.modalPresentationStyle = UIModalPresentationCustom;
+		self.deckDelegate = [[DeckTransitioningDelegate alloc]
+								initWithIsSwipeToDismissEnabled:[self.screenTransition.enableDeckSwipeToDismiss getWithDefaultValue:YES]
+								presentDuration:[NSNumber numberWithDouble:[self.screenTransition.deckPresentDuration getWithDefaultValue:0.3]]
+								presentAnimation:nil
+								presentCompletion:nil
+								dismissDuration:[NSNumber numberWithDouble:[self.screenTransition.deckDismissDuration getWithDefaultValue:0.3]]
+								dismissAnimation:nil
+								dismissCompletion:^(BOOL completed) {
+									// TODO: !
+									/* [_modalManager
+										dismissModal:newVc
+										completion:^() { }
+										dismissedWithSwipe: completed
+									]; */
+								}
+							];
+#else
+		[[NSException exceptionWithName:@"DeckTransitionNotIncludedError"
+								reason:@"DeckTransition has not been included! Refer to installation instructions on how to add it."
+								userInfo:nil]
+		raise];
+#endif
+	}
+
 	return self;
 }
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+	if (self.deckDelegate != nil) {
+		return [self.deckDelegate animationControllerForPresentedController:presented presentingController:presenting sourceController:source];
+	}
+
 	return self;
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+	if (self.deckDelegate != nil) {
+		return [self.deckDelegate animationControllerForDismissedController:dismissed];
+	}
+
 	return self;
+}
+
+- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source {
+	if (self.deckDelegate != nil) {
+		return [self.deckDelegate
+				presentationControllerForPresentedViewController:presented
+				presentingViewController:presenting
+				sourceViewController:source];
+	}
+
+	return nil;
 }
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
